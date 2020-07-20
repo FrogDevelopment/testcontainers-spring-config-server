@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(ConfigServerProperties.PREFIX)
 public class ConfigServerProperties {
 
-    public static final String PREFIX = "testcontainer.config-server";
+    public static final String PREFIX = "testcontainers.config-server";
     public static final String BEAN_NAME = "embeddedSpringConfigServer";
 
     private boolean enabled = true;
@@ -19,7 +19,7 @@ public class ConfigServerProperties {
     @Data
     public static class Docker {
 
-        private String image = "frogdevelopment/testcontainer-config-server";
+        private String image = "frogdevelopment/testcontainers-config-server";
         private String tag = "Hoxton.SR6";
 
         public String fullName() {

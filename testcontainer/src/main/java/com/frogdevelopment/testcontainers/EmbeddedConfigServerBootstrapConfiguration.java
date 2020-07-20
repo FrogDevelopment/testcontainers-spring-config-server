@@ -16,7 +16,7 @@ import org.springframework.core.annotation.Order;
 @Slf4j
 @Configuration
 @Order(HIGHEST_PRECEDENCE)
-@ConditionalOnProperty(name = "testcontainer.config-server.enabled", matchIfMissing = true)
+@ConditionalOnProperty(name = "testcontainers.config-server.enabled", matchIfMissing = true)
 @EnableConfigurationProperties(ConfigServerProperties.class)
 public class EmbeddedConfigServerBootstrapConfiguration {
 
@@ -36,7 +36,7 @@ public class EmbeddedConfigServerBootstrapConfiguration {
 
                 containerCache.put(container.getId(), container);
 
-                log.info("Starting config server testcontainer");
+                log.info("Starting Testcontainers Config Server");
                 container.start();
             } else {
                 log.info("Re-using existing container");

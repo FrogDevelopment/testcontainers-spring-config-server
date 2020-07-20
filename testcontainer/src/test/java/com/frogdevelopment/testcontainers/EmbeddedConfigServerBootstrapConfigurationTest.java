@@ -55,7 +55,7 @@ class EmbeddedConfigServerBootstrapConfigurationTest {
                 .containsEntry("SPRING_CLOUD_CONFIG_SERVER_GIT_REFRESH_RATE", "56")
                 .containsEntry("SPRING_CLOUD_CONFIG_SERVER_GIT_CLONE_ON_START", "false");
         assertThat(embeddedConfigServer.getContainerInfo().getName())
-                .matches("^/(testcontainer-config-server)-([a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8})$");
+                .matches("^/(testcontainers-config-server)-([a-f0-9]{8}(-[a-f0-9]{4}){4}[a-f0-9]{8})$");
     }
 
     @Test

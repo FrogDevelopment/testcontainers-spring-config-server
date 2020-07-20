@@ -21,7 +21,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @SpringBootTest(
         classes = DisableEmbeddedConfigServerBootstrapConfigurationTest.TestConfiguration.class,
         properties = {
-                "testcontainer.config-server.enabled=false",
+                "testcontainers.config-server.enabled=false",
                 "spring.cloud.config.enabled=false"
         }
 )

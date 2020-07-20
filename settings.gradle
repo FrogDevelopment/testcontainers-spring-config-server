@@ -1,3 +1,3 @@
-rootProject.name = 'testcontainer-spring-config-server'
+rootProject.name = 'testcontainers-spring-config-server'
 include 'image'
 include 'testcontainer'

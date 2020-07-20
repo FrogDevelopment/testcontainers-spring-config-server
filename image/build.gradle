@@ -20,7 +20,7 @@ jib {
     }
 
     to {
-        image = 'frogdevelopment/testcontainer-config-server'
+        image = 'frogdevelopment/testcontainers-config-server'
         tags = [version.toString()].toSet()
     }
 
