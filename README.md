@@ -17,11 +17,11 @@ testcontainers:
   config-server:
     enabled: true                                             # Enable/Disable configuration of config server on startup.
     docker:
-      image: frogdevelopment/testcontainers-config-server      # Docker image to use.
+      image: frogdevelopment/testcontainers-config-server     # Docker image to use.
       tag: Hoxton.SR6                                         # Docker tag to use.
     git:
-      uri: XXXXXXX                                            # Remote Git repository to use.
-      branch: master                                          # Branch of the repository to use.
+      uri: your_own_git_uri                                   # Remote Git repository to use.
+      branch: the_branch_or_tag_I_want_to_use                 # Branch or tag of the repository to use.
       clone-on-start: true                                    # Flag to indicate that the repository should be cloned on startup (not on demand). Generally leads to slower startup but faster first query.
       refresh-rate: 30                                        # Time (in seconds) between refresh of the git repository, defaults to 30 seconds.
       timeout: 15                                             # Timeout (in seconds) for obtaining HTTP or SSH connection (if applicable), defaults to 5 seconds.
@@ -52,7 +52,7 @@ or
 
 As it can take a little more time at the beginning when testing locally, you can disable test containers and use a running locally spring cloud config server.
 
-bootstrap-test.yml
+_bootstrap-test.yml_
 ```yaml
 spring:
   cloud:
@@ -67,7 +67,7 @@ testcontainers:
 
 Here is a docker-compose config file to launch a local config server
 
-docker-compose.yml
+_docker-compose.yml_
 ```yaml
   spring-config-server:
     container_name: spring-config-server
@@ -79,6 +79,6 @@ docker-compose.yml
       SPRING_CLOUD_CONFIG_SERVER_GIT_DEFAULT_LABEL: develop
       SPRING_CLOUD_CONFIG_SERVER_GIT_CLONE_ON_START: 'false'
 ```
-## TODO
+###### TODO
 - add authentication configuration
 https://cloud.spring.io/spring-cloud-config/reference/html/#_git_ssh_configuration_using_properties
