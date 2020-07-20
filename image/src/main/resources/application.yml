@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-config-server
+    name: testcontainers-config-server
 
   profiles:
     active: git
