@@ -1,6 +1,7 @@
 testcontainer:
   config-server:
     git:
+      uri: https://github.com/FrogDevelopment/testcontainer-spring-config-server
       branch: master
       refresh-rate: 56
       timeout: 10

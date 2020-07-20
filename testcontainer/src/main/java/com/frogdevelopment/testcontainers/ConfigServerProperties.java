@@ -30,7 +30,7 @@ public class ConfigServerProperties {
     @Data
     public static class Git {
 
-        private String uri = "https://github.com/FrogDevelopment/testcontainer-spring-config-server";
+        private String uri;
         private String branch = "master";
         private int timeout = 15;
         private int refreshRate = 30;
