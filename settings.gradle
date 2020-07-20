@@ -1,0 +1,3 @@
+rootProject.name = 'testcontainer-spring-config-server'
+include 'image'
+include 'testcontainer'

@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'com.google.cloud.tools.jib'
+}
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'org.springframework.cloud:spring-cloud-config-server'
+}
+
+jib {
+
+    from {
+        image = 'adoptopenjdk:14.0.2_8-jre-openj9-0.21.0-bionic'
+    }
+
+    to {
+        image = 'frogdevelopment/testcontainer-config-server'
+        tags = [version.toString()].toSet()
+    }
+
+    container {
+        mainClass = 'com.frogdevelopment.configserver.Application'
+        volumes = ['/tmp']
+        ports = ['8888']
+        jvmFlags = ['-Xms64m', '-Xmx128m']
+        creationTime = 'USE_CURRENT_TIMESTAMP'
+    }
+}
+
+//tasks.build.dependsOn tasks.jib

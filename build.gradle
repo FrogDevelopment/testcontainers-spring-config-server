@@ -1,0 +1,30 @@
+plugins {
+    id 'io.freefair.lombok' version '5.1.0' apply false
+    id 'com.google.cloud.tools.jib' version '2.4.0' apply false
+    id 'fr.brouillard.oss.gradle.jgitver' version '0.9.1' apply false
+    id 'org.springframework.boot' version '2.3.1.RELEASE' apply false
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE' apply false
+}
+
+allprojects {
+
+    repositories {
+        jcenter()
+    }
+}
+
+subprojects {
+    group 'com.frogdevelopment.testcontainers'
+
+    version = 'Hoxton.SR6'
+
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:$version"
+        }
+    }
+}
+

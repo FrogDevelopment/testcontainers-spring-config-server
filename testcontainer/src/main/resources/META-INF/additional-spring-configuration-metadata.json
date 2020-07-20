@@ -1,0 +1,83 @@
+{
+  "groups": [
+  ],
+  "properties": [
+    {
+      "name": "testcontainer.config-server.enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": "true",
+      "description": "Enable/Disable configuration of config server on startup."
+    },
+    {
+      "name": "testcontainer.config-server.docker.image",
+      "type": "java.lang.String",
+      "description": "Docker image to use."
+    },
+    {
+      "name": "testcontainer.config-server.docker.tag",
+      "type": "java.lang.String",
+      "description": "Docker tag to use."
+    },
+    {
+      "name": "testcontainer.config-server.git.uri",
+      "type": "java.lang.String",
+      "description": "Remote Git repository to use."
+    },
+    {
+      "name": "testcontainer.config-server.git.branch",
+      "type": "java.lang.String",
+      "description": "Branch of the repository to use."
+    },
+    {
+      "name": "testcontainer.config-server.git.timeout",
+      "type": "java.lang.Integer",
+      "defaultValue": "5",
+      "description": "Timeout (in seconds) for obtaining HTTP or SSH connection (if applicable), defaults to 5 seconds."
+    },
+    {
+      "name": "testcontainer.config-server.git.refresh-rate",
+      "type": "java.lang.Integer",
+      "defaultValue": "30",
+      "description": "Time (in seconds) between refresh of the git repository, defaults to 30 seconds."
+    },
+    {
+      "name": "testcontainer.config-server.git.clone-on-start",
+      "type": "java.lang.Boolean",
+      "defaultValue": "true",
+      "description": "Flag to indicate that the repository should be cloned on startup (not on demand). Generally leads to slower startup but faster first query."
+    },
+    {
+      "name": "testcontainer.config-server.server.port",
+      "type": "java.lang.Integer",
+      "defaultValue": "8888",
+      "description": "Server HTTP port."
+    },
+    {
+      "name": "testcontainer.config-server.server.health-path",
+      "type": "java.lang.String",
+      "defaultValue": "actuator/health",
+      "description": "Path to the actuator health's endpoint, default to \"/actuator/health\"."
+    },
+    {
+      "name": "testcontainer.config-server.server.wait-timeout",
+      "type": "java.lang.String",
+      "defaultValue": "60",
+      "description": "Duration (in seconds) of waiting time until container treated as started, defaults to 60 seconds."
+    }
+  ],
+  "hints": [
+    {
+      "name": "testcontainer.config-server.enabled",
+      "values": [
+        {
+          "value": "true",
+          "description": "Enable configuration of config server on startup."
+        },
+        {
+          "value": "false",
+          "description": "Disable configuration of config server on startup."
+        }
+      ]
+    }
+  ]
+}

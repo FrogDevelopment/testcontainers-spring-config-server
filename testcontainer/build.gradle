@@ -1,0 +1,92 @@
+plugins {
+    id 'java-library'
+//    id 'maven-publish'
+    id 'io.freefair.lombok'
+    id 'fr.brouillard.oss.gradle.jgitver'
+}
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+dependencyManagement {
+    def testcontainersVersion = '1.14.3'
+    def junitVersion = '5.5.2'
+
+    imports {
+        mavenBom "org.testcontainers:testcontainers-bom:$testcontainersVersion"
+        mavenBom "org.junit:junit-bom:$junitVersion"
+    }
+}
+
+dependencies {
+    def logbackVersion = '1.2.3'
+
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    compileOnly 'org.testcontainers:testcontainers'
+
+    implementation 'org.springframework.cloud:spring-cloud-starter'
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+
+    testImplementation "ch.qos.logback:logback-classic:$logbackVersion"
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-web'
+
+    testImplementation 'org.testcontainers:junit-jupiter'
+
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+jgitver {
+    strategy = 'PATTERN'
+    versionPattern = '${v}-SNAPSHOT'
+    tagVersionPattern = '${v}'
+}
+
+test {
+    reports.html.enabled = false
+
+    useJUnitPlatform {
+    }
+}
+
+//task sourcesJar(type: Jar) {
+//    from sourceSets.main.allJava
+//    archiveClassifier = 'sources'
+//}
+//
+//publishing {
+//    repositories {
+//        maven {
+//            name = 'nexus'
+//            credentials {
+//                username nexusUser
+//                password nexusPassword
+//            }
+//            afterEvaluate {
+//                url = version?.endsWith('SNAPSHOT') ? "$nexusUrl/maven-snapshots/" : "$nexusUrl/maven-releases/"
+//            }
+//        }
+//    }
+//
+//    publications {
+//        maven(MavenPublication) {
+//            artifactId = 'testcontainers-config-server'
+//
+//            from components.java
+//
+//            artifact sourcesJar
+//        }
+//    }
+//}
+//
+//tasks.withType(AbstractPublishToMaven) {
+//    doFirst {
+//        println("Publishing ${publication.groupId}:${publication.artifactId}:${publication.version}")
+//    }
+//}

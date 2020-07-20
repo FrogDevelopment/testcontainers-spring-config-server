@@ -1,0 +1,16 @@
+testcontainer:
+  config-server:
+    git:
+      branch: master
+      refresh-rate: 56
+      timeout: 10
+    server:
+      port: 1234
+      wait-timeout: 60
+      health-path: /actuator/health
+
+spring:
+  application:
+    name: testcontainer-config-server
+
+
