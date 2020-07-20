@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Testcontainers-spring-config-server by FrogDevelopment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Testcontainers-spring-config-server</h1>
+      <h2 class="project-tagline">Testcontainers of Spring-Config-Server to use during Integration Tests</h2>
+      <a href="https://github.com/FrogDevelopment/testcontainers-spring-config-server" class="btn">View on GitHub</a>
+      <a href="https://github.com/FrogDevelopment/testcontainers-spring-config-server/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/FrogDevelopment/testcontainers-spring-config-server/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="testcontainers-spring-config-server" class="anchor" href="#testcontainers-spring-config-server" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Testcontainers Spring Config Server</h1>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>Add the dependency for Testcontainers Spring Config Server in your spring boot application:</p>
+<div class="highlight highlight-source-groovy"><pre>testImplementation <span class="pl-s"><span class="pl-pds">'</span>com.frog-development.testcontainers:testcontainers-config-server:Hoxton.SR6<span class="pl-pds">'</span></span></pre></div>
+<p>N.B.: The tag will use the <a href="https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Hoxton-Release-Notes">Spring Cloud Release</a> tag, to easily understand what version of spring is used.</p>
+<p>The auto-configuration will automatically launch 1 container <a href="https://hub.docker.com/repository/docker/frogdevelopment/testcontainers-config-server">testcontainers-config-server</a> to be used during your integration tests.</p>
+<h2>
+<a id="customization" class="anchor" href="#customization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Customization</h2>
+<p>Here are the default values embedded by default with the dependency :</p>
+<div class="highlight highlight-source-yaml"><pre><span class="pl-ent">testcontainers</span>:
+  <span class="pl-ent">config-server</span>:
+    <span class="pl-ent">enabled</span>: <span class="pl-s">true                                             </span><span class="pl-c"><span class="pl-c">#</span> Enable/Disable configuration of config server on startup.</span>
+    <span class="pl-ent">docker</span>:
+      <span class="pl-ent">image</span>: <span class="pl-s">frogdevelopment/testcontainers-config-server     </span><span class="pl-c"><span class="pl-c">#</span> Docker image to use.</span>
+      <span class="pl-ent">tag</span>: <span class="pl-s">Hoxton.SR6                                         </span><span class="pl-c"><span class="pl-c">#</span> Docker tag to use.</span>
+    <span class="pl-ent">git</span>:
+      <span class="pl-ent">uri</span>: <span class="pl-s">your_own_git_uri                                   </span><span class="pl-c"><span class="pl-c">#</span> Remote Git repository to use.</span>
+      <span class="pl-ent">branch</span>: <span class="pl-s">the_branch_or_tag_I_want_to_use                 </span><span class="pl-c"><span class="pl-c">#</span> Branch or tag of the repository to use.</span>
+      <span class="pl-ent">clone-on-start</span>: <span class="pl-s">true                                    </span><span class="pl-c"><span class="pl-c">#</span> Flag to indicate that the repository should be cloned on startup (not on demand). Generally leads to slower startup but faster first query.</span>
+      <span class="pl-ent">refresh-rate</span>: <span class="pl-c1">30</span>                                        <span class="pl-c"><span class="pl-c">#</span> Time (in seconds) between refresh of the git repository, defaults to 30 seconds.</span>
+      <span class="pl-ent">timeout</span>: <span class="pl-c1">15</span>                                             <span class="pl-c"><span class="pl-c">#</span> Timeout (in seconds) for obtaining HTTP or SSH connection (if applicable), defaults to 5 seconds.</span>
+    <span class="pl-ent">server</span>:
+      <span class="pl-ent">port</span>: <span class="pl-c1">8888</span>                                <span class="pl-c"><span class="pl-c">#</span> Server HTTP port.</span>
+      <span class="pl-ent">wait-timeout</span>: <span class="pl-c1">60</span>                          <span class="pl-c"><span class="pl-c">#</span> Duration (in seconds) of waiting time until container treated as started, defaults to 60 seconds</span>
+      <span class="pl-ent">health-path</span>: <span class="pl-s">/actuator/health             </span><span class="pl-c"><span class="pl-c">#</span> Path to the actuator health's endpoint, default to "/actuator/health".</span></pre></div>
+<p>You can override any properties by updating or adding <em>bootstrap-test.yml</em> file in <em>src/test/resources</em> spring project path.</p>
+<p>It is also possible to locally enable/disable the run of the testcontainers by setting the property <code>testcontainers.config-server.enabled</code> to false:</p>
+<div class="highlight highlight-source-java"><pre><span class="pl-k">@SpringBootTest</span>(<span class="pl-c1">properties</span> <span class="pl-k">=</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>testcontainers.config-server.enabled=false<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>spring.cloud.config.enabled=false<span class="pl-pds">"</span></span>
+})</pre></div>
+<p>or</p>
+<div class="highlight highlight-source-java"><pre><span class="pl-k">@TestPropertySource</span>(<span class="pl-c1">properties</span> <span class="pl-k">=</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>testcontainers.config-server.enabled=false<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>spring.cloud.config.enabled=false<span class="pl-pds">"</span></span>
+})</pre></div>
+<h2>
+<a id="running-with-local-spring-config-server-instead-of-testcontainers" class="anchor" href="#running-with-local-spring-config-server-instead-of-testcontainers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running with local spring-config-server instead of Testcontainers</h2>
+<p>As it can take a little more time at the beginning when testing locally, you can disable test containers and use a running locally spring cloud config server.</p>
+<p><em>bootstrap-test.yml</em></p>
+<div class="highlight highlight-source-yaml"><pre><span class="pl-ent">spring</span>:
+  <span class="pl-ent">cloud</span>:
+    <span class="pl-ent">config</span>:
+      <span class="pl-ent">uri</span>: <span class="pl-s">http://localhost:8888</span>
+      <span class="pl-ent">label</span>: <span class="pl-s">the_branch_or_tag_I_want_to_use</span>
+
+<span class="pl-ent">testcontainers</span>:
+  <span class="pl-ent">config-server</span>:
+    <span class="pl-ent">enabled</span>: <span class="pl-c1">false</span></pre></div>
+<p>Here is a docker-compose config file to launch a local config server</p>
+<p><em>docker-compose.yml</em></p>
+<div class="highlight highlight-source-yaml"><pre>  <span class="pl-ent">spring-config-server</span>:
+    <span class="pl-ent">container_name</span>: <span class="pl-s">spring-config-server</span>
+    <span class="pl-ent">image</span>: <span class="pl-s">frogdevelopment/testcontainers-config-server:Hoxton.SR6</span>
+    <span class="pl-ent">ports</span>:
+      - <span class="pl-c1">8888:8080</span>
+    <span class="pl-ent">environment</span>:
+      <span class="pl-ent">SPRING_CLOUD_CONFIG_SERVER_GIT_URI</span>: <span class="pl-s">your_own_git_uri</span>
+      <span class="pl-ent">SPRING_CLOUD_CONFIG_SERVER_GIT_DEFAULT_LABEL</span>: <span class="pl-s">develop</span>
+      <span class="pl-ent">SPRING_CLOUD_CONFIG_SERVER_GIT_CLONE_ON_START</span>: <span class="pl-s"><span class="pl-pds">'</span>false<span class="pl-pds">'</span></span></pre></div>
+<h6>
+<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TODO</h6>
+<ul>
+<li>add authentication configuration
+<a href="https://cloud.spring.io/spring-cloud-config/reference/html/#_git_ssh_configuration_using_properties">https://cloud.spring.io/spring-cloud-config/reference/html/#_git_ssh_configuration_using_properties</a>
+</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/FrogDevelopment/testcontainers-spring-config-server">Testcontainers-spring-config-server</a> is maintained by <a href="https://github.com/FrogDevelopment">FrogDevelopment</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
