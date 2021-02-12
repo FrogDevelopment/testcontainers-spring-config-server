@@ -16,7 +16,7 @@ allprojects {
 subprojects {
     group 'com.frogdevelopment.testcontainers'
 
-    version = 'Hoxton.SR9'
+    version = 'Hoxton.SR10'
 
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
