@@ -9,7 +9,7 @@ sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
 dependencyManagement {
-    def testcontainersVersion = '1.15.1'
+    def testcontainersVersion = '1.15.2'
     def junitVersion = '5.7.1'
 
     imports {
