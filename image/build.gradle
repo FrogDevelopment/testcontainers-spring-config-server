@@ -16,7 +16,7 @@ dependencies {
 jib {
 
     from {
-        image = 'adoptopenjdk:14.0.2_8-jre-openj9-0.21.0-bionic'
+        image = 'frogdevelopment/docker-adoptopenjdk14-curl:latest'
     }
 
     to {
@@ -30,6 +30,11 @@ jib {
         ports = ['8888']
         jvmFlags = ['-Xms64m', '-Xmx128m']
         creationTime = 'USE_CURRENT_TIMESTAMP'
+            labels = [
+                    'frog.image_base': jib.from.image,
+                    'spring-cloud.version'   : version.toString(),
+                    'spring-boot.version'   : '2.5.0'
+            ]
     }
 }
 

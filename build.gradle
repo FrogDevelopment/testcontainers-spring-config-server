@@ -9,14 +9,14 @@ plugins {
 allprojects {
 
     repositories {
-        jcenter()
+        mavenCentral()
     }
 }
 
 subprojects {
     group 'com.frogdevelopment.testcontainers'
 
-    version = 'Hoxton.SR11'
+    version = '2020.0.2'
 
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
@@ -26,5 +26,10 @@ subprojects {
             mavenBom "org.springframework.cloud:spring-cloud-dependencies:$version"
         }
     }
+}
+
+wrapper {
+    gradleVersion = '7.0.2'
+    distributionType = Wrapper.DistributionType.ALL
 }
 

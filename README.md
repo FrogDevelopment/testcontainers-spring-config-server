@@ -3,7 +3,7 @@
 Add the dependency for Testcontainers Spring Config Server in your spring boot application:
 
 ```groovy
-testImplementation 'com.frog-development.testcontainers:testcontainers-config-server:Hoxton.SR6'
+testImplementation 'com.frog-development.testcontainers:testcontainers-config-server:2020.0.2'
 ```
 
 N.B.: The tag will use the [Spring Cloud Release](https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Hoxton-Release-Notes) tag, to easily understand what version of spring is used.
@@ -71,7 +71,7 @@ _docker-compose.yml_
 ```yaml
   spring-config-server:
     container_name: spring-config-server
-    image: frogdevelopment/testcontainers-config-server:Hoxton.SR6
+    image: frogdevelopment/testcontainers-config-server:2020.0.2
     ports:
       - 8888:8080
     environment:
