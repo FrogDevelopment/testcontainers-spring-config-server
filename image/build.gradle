@@ -3,8 +3,8 @@ plugins {
     id 'com.google.cloud.tools.jib'
 }
 
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
+sourceCompatibility = JavaVersion.VERSION_15
+targetCompatibility = JavaVersion.VERSION_15
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
@@ -16,7 +16,7 @@ dependencies {
 jib {
 
     from {
-        image = 'frogdevelopment/docker-adoptopenjdk14-curl:latest'
+        image = 'frogdevelopment/docker-adoptopenjdk145-curl:latest'
     }
 
     to {
