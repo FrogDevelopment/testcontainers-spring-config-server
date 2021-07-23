@@ -33,7 +33,7 @@ jib {
             labels = [
                     'frog.image_base': jib.from.image,
                     'spring-cloud.version'   : version.toString(),
-                    'spring-boot.version'   : '2.5.0'
+                    'spring-boot.version'   : '2.5.3'
             ]
     }
 }
