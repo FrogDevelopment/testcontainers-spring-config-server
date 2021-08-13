@@ -1,5 +1,5 @@
 plugins {
-    id 'io.freefair.lombok' version '5.3.3.3' apply false
+    id 'io.freefair.lombok' version '6.1.0' apply false
     id 'com.google.cloud.tools.jib' version '3.1.2' apply false
     id 'fr.brouillard.oss.gradle.jgitver' version '0.9.1' apply false
     id 'org.springframework.boot' version '2.5.3' apply false
