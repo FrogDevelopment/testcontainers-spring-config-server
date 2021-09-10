@@ -19,7 +19,7 @@ dependencyManagement {
 }
 
 dependencies {
-    def logbackVersion = '1.2.4'
+    def logbackVersion = '1.2.6'
 
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
